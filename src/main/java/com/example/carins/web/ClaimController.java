@@ -25,7 +25,7 @@ public class ClaimController {
         this.claimRepository = claimRepository;
     }
 
-    //POST request - /api/cars/{carId}/claims
+    //POST request
     @PostMapping("/{carId}/claims")
     public ResponseEntity<?> createClaim(
             @PathVariable Long carId,
@@ -33,7 +33,7 @@ public class ClaimController {
 
         Optional<Car> carOpt = carRepository.findById(carId);
         if (carOpt.isEmpty()) return ResponseEntity.notFound().build();
-
+    
         InsuranceClaim claim = new InsuranceClaim();
         claim.setCar(carOpt.get());
         claim.setClaimDate(request.getClaimDate());
@@ -47,7 +47,7 @@ public class ClaimController {
                 .body(saved);
     }
 
-    //GET request - /api/cars/{carId}/history
+    //GET request
     @GetMapping("/{carId}/history")
     public ResponseEntity<?> getHistory(@PathVariable Long carId) {
         Optional<Car> carOpt = carRepository.findById(carId);

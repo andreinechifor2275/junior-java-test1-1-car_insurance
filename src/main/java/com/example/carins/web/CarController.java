@@ -62,4 +62,6 @@ public class CarController {
     }
 
     public record InsuranceValidityResponse(Long carId, String date, boolean valid) {}
+
+
 }
